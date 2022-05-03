@@ -4,10 +4,16 @@ const ROCK = 'ROCK';
 const PAPER = 'PAPER';
 const SCISSORS = 'SCISSORS';
 const DEFAULT_USER_CHOICE = ROCK;
+let startGame = true; 
 
 const getPlayerChoice = function() {
   const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
-  if (
+  console.log(selection);
+  if (selection === 'QUIT' || selection === 'Q'){
+    startGame = false; 
+    return; 
+  }
+  else if (
     selection !== ROCK &&
     selection !== PAPER &&
     selection !== SCISSORS
@@ -33,14 +39,35 @@ const computerMove = () => {
 
 }
 
+function determineWinner(player, computer){
+  const playerWin = 'Congratulation!!! You win'; 
+  const computerWin = 'Sorry, computer won try again!!'
+  const draw = 'Draw. Better luck next time'
+  if ((player === 'PAPER' && computer === 'ROCK') || (player==='ROCK'&& computer ==='SCISSOR')|| (player==='SCISSORS'&&computer==='PAPER')){
+    return playerWin;
+  }
+  else if (player === computer){
+    return draw; 
+  }
+  
+  return computerWin; 
+}
+
+
 console.log(computerMove()); 
 console.log(computerMove()); 
 console.log(computerMove()); 
 
 startGameBtn.addEventListener('click', function() {
+  
   console.log('Game is starting...');
   const playerSelection = getPlayerChoice();
-  console.log(playerSelection);
+  while (startGame){
+  //console.log(playerSelection);
+  const computerChoice = computerMove();
+  const result = determineWinner(playerSelection, computerChoice); 
+  alert(`you played ${playerSelection}, the computer choice is ${computerChoice}. ${result}` ); 
+  }
 });
 
 
