@@ -39,17 +39,33 @@ const computerMove = () => {
 
 }
 
+function updateUI(result){
+  console.log('a'); 
+  
+  if (result === 'win'){
+  const imgElement = document.querySelector('img'); 
+  const startBtn = document.querySelector('button'); 
+  imgElement.classList.add('disable'); 
+  startBtn.classList.add('disable');
+  document.body.style.backgroundImage = "url('https://t3.ftcdn.net/jpg/03/03/52/48/360_F_303524879_h1oC0wOJsh8uqo0aZf89lNJg7njTa5A8.jpg')";
+
+  }
+}
+
 function determineWinner(player, computer){
   const playerWin = 'Congratulation!!! You win'; 
   const computerWin = 'Sorry, computer won try again!!'
   const draw = 'Draw. Better luck next time'
   if ((player === 'PAPER' && computer === 'ROCK') || (player==='ROCK'&& computer ==='SCISSOR')|| (player==='SCISSORS'&&computer==='PAPER')){
+    updateUI('win'); 
     return playerWin;
+
   }
   else if (player === computer){
+    updateUI('draw'); 
     return draw; 
   }
-  
+  updateUI('lose'); 
   return computerWin; 
 }
 
@@ -62,12 +78,14 @@ startGameBtn.addEventListener('click', function() {
   
   console.log('Game is starting...');
   const playerSelection = getPlayerChoice();
-  while (startGame){
+  // while (startGame){
+  // const playerSelection = getPlayerChoice();
   //console.log(playerSelection);
   const computerChoice = computerMove();
   const result = determineWinner(playerSelection, computerChoice); 
   alert(`you played ${playerSelection}, the computer choice is ${computerChoice}. ${result}` ); 
-  }
+  // }
+
 });
 
 
