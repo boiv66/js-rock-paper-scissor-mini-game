@@ -48,6 +48,8 @@ function updateUI(result){
   imgElement.classList.add('disable'); 
   startBtn.classList.add('disable');
   document.body.style.backgroundImage = "url('https://t3.ftcdn.net/jpg/03/03/52/48/360_F_303524879_h1oC0wOJsh8uqo0aZf89lNJg7njTa5A8.jpg')";
+  document.body.style.backgroundSize = 'cover'; 
+  document.body.style.backgroundPosition = 'center'; 
 
   }
 }
