@@ -41,17 +41,21 @@ const computerMove = () => {
 
 function updateUI(result){
   console.log('a'); 
-  
-  if (result === 'win'){
   const imgElement = document.querySelector('img'); 
   const startBtn = document.querySelector('button'); 
   imgElement.classList.add('disable'); 
   startBtn.classList.add('disable');
-  document.body.style.backgroundImage = "url('https://t3.ftcdn.net/jpg/03/03/52/48/360_F_303524879_h1oC0wOJsh8uqo0aZf89lNJg7njTa5A8.jpg')";
-  document.body.style.backgroundSize = 'cover'; 
-  document.body.style.backgroundPosition = 'center'; 
+  if (result === 'win'){
+  document.body.style.backgroundImage = "url('https://img.freepik.com/free-vector/you-win-celebrating-background_116399-356.jpg?w=2000')";
+   
 
   }
+  else if (result === 'lose'){
+    document.body.style.backgroundImage = "url('https://i.ytimg.com/vi/ic2KVT72XKY/maxresdefault.jpg')";
+   
+  }
+  document.body.style.backgroundSize = 'cover'; 
+  document.body.style.backgroundPosition = 'center';
 }
 
 function determineWinner(player, computer){
