@@ -6,6 +6,9 @@ const SCISSORS = 'SCISSORS';
 const DEFAULT_USER_CHOICE = ROCK;
 let startGame = true; 
 
+const imgElement = document.querySelector('img'); 
+const startBtn = document.querySelector('button'); 
+
 const getPlayerChoice = function() {
   const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
   console.log(selection);
@@ -41,8 +44,7 @@ const computerMove = () => {
 
 function updateUI(result){
   console.log('a'); 
-  const imgElement = document.querySelector('img'); 
-  const startBtn = document.querySelector('button'); 
+  
   imgElement.classList.add('disable'); 
   startBtn.classList.add('disable');
   if (result === 'win'){
@@ -91,6 +93,14 @@ startGameBtn.addEventListener('click', function() {
   const result = determineWinner(playerSelection, computerChoice); 
   alert(`you played ${playerSelection}, the computer choice is ${computerChoice}. ${result}` ); 
   // }
+  setTimeout(()=>
+   {imgElement.classList.remove('disable');
+    startBtn.classList.remove('disable');
+    document.body.style.background = 'none';
+    document.body.style.backgroundColor = 'black';}, 2000); 
+  
+
+
 
 });
 
